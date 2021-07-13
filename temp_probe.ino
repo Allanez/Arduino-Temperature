@@ -7,8 +7,9 @@ OneWire oneWire(ONE_WIRE_BUS);
 
 DallasTemperature sensors(&oneWire);
 
- float Celcius=0;
- float Fahrenheit=0;
+//initialize variables
+float Celcius=0;
+float Fahrenheit=0;
 void setup(void)
 {
   
@@ -18,10 +19,14 @@ void setup(void)
 
 void loop(void)
 { 
+  //read sensor
   sensors.requestTemperatures();
   delay(1000);
+  //Get celsuis reading
   Celcius=sensors.getTempCByIndex(0);
+  //Convert to fahrenheit
   Fahrenheit=sensors.toFahrenheit(Celcius);
+  //Print values
   Serial.print(" C  ");
   Serial.print(Celcius);
   Serial.print(" F  ");
